@@ -23,8 +23,10 @@
 
 <div class="w-4/5 m-auto pt-20">
     <form 
-        action="/blog"
+        action="{{ route('blog.store')}}"
+        method="POST"
         enctype="multipart/form-data">
+        @csrf
 
         <input 
             type="text"
