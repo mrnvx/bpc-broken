@@ -133,6 +133,7 @@ class PostsController extends Controller
         return redirect('/blog')
             ->with('message', 'Your post has been deleted!');
     }
+    
     public function addComment(Request $request, Comment $comment) {
 
         if ($post->comment()->where('id', $request['comment'])->exists()) {

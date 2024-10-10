@@ -67,6 +67,9 @@
                         </button>
                     </form>
                 </span>
+                <span>
+                    <a href="#">Create Comment</a>
+                </span>
             @endif
         </div>
     </div>    
