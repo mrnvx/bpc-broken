@@ -133,4 +133,20 @@ class PostsController extends Controller
         return redirect('/blog')
             ->with('message', 'Your post has been deleted!');
     }
+    public function addComment(Request $request, Comment $comment) {
+
+        if ($post->comment()->where('id', $request['comment'])->exists()) {
+            return redirect('/comment/' . $comment->id)->with('error', 'Comment is already in the comment!');
+        }
+        $post->comment()->attach($request['post']);
+        
+        return redirect('/comment/' . $comment->id)->with('success', 'Comment added successfully!');
+    }
+    public function removeComment(Request $request, Comment $comment) {
+        
+        
+        $comment->comment()->detach($request['comment']);
+
+        return redirect('/comment/' . $comment->id)->with('success', 'Comment removed successfully!');
+    }
 }
