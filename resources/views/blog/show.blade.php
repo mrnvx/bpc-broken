@@ -22,26 +22,20 @@
     @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
         <span class="float-right">
             <a 
-                href="/blog/{{ $post->slug }}/edit"
+                href="{{route('blog.edit', $post)}}"
                 class="text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">
                 Edit
             </a>
         </span>
 
         <span class="float-right">
-                <form 
-                action="/blog/{{ $post->slug }}"
-                method="POST">
-                @csrf
-                @method('delete')
-
-                <button
-                    class="text-red-500 pr-3"
-                    type="submit">
-                    Delete
-                </button>
-
-            </form>
+        <form action="{{ route('blog.destroy', $post)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="text-red-500 pr-3" type="submit">
+                            Delete
+                        </button>
+                    </form>
         </span>
     @endif
 

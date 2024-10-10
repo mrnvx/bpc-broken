@@ -59,11 +59,13 @@
                 </span>
 
                 <span class="float-right">
-                        <button
-                            class="text-red-500 pr-3"
-                            type="submit">
+                    <form action="{{ route('blog.destroy', $post)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="text-red-500 pr-3" type="submit">
                             Delete
                         </button>
+                    </form>
                 </span>
             @endif
         </div>
